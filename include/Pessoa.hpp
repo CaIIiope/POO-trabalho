@@ -14,14 +14,16 @@ class Pessoa{
         int _idade;
         Calendario _calendario;
 
-
         void carregarDados();
 
     public:
         Pessoa(std::string nome, std::string pathdata, int idade);
         Pessoa(const std::string& pathdata);
         ~Pessoa();
-        void adicionarTreino(int ano, int mes, int dia, int duracao, int calorias,std::string lugar, std::string nome);
+
+        void adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar, std::string nome, int series, int repeticoes, int peso);
+        void adicionarAerobico(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int intensidade);
+
         void removerTreino(int ano, int mes, int dia, std::string& nome);
         void salvarDados();
 };

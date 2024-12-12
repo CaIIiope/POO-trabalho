@@ -2,6 +2,9 @@
 #define TREINO_HPP
 
 #include <string>
+#include <sstream>
+#include <iostream>
+#include <fstream>
 
 class Treino{
     private:
@@ -9,7 +12,9 @@ class Treino{
         std::string _lugar, _nome;
     public:
         Treino(int duracao, int calorias, std::string lugar, std::string nome);
-        ~Treino();
+        virtual ~Treino() = 0;
+        virtual void salvaTreino(std::stringstream* out) = 0;
+
         std::string getNome();
         std::string getLugar();
         int getDuracao();

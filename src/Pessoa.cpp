@@ -10,8 +10,13 @@ Pessoa::Pessoa(std::string nome, std::string pathdata, int idade){
 Pessoa::~Pessoa(){
 }
 
-void Pessoa::adicionarTreino(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome){
-    _calendario.adicionarTreino(ano, mes, dia, duracao, calorias, lugar, nome);
+void Pessoa::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series, int repeticoes, int peso){
+    std::cout << "Adicionando treino de musculação..." << std::endl;
+    _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, repeticoes, peso);
+}
+
+void Pessoa::adicionarAerobico(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int intensidade){
+    _calendario.adicionarAerobico(ano, mes, dia, duracao, calorias, lugar, nome, intensidade);
 }
 
 void Pessoa::removerTreino(int ano, int mes, int dia, std::string& nome){
@@ -20,7 +25,7 @@ void Pessoa::removerTreino(int ano, int mes, int dia, std::string& nome){
 
 void Pessoa::salvarDados(){
     std::ofstream file;
-    file.open(_pathdata);
+    file.open(_pathdata, std::ofstream::out | std::ofstream::trunc);
     if (!file.is_open()){
         std::cout << "Erro ao abrir arquivo" << std::endl;
         return;
@@ -29,14 +34,17 @@ void Pessoa::salvarDados(){
     file << _nome << std::endl;
     file << _idade << std::endl;
 
-// https://www.youtube.com/watch?v=4J5linNcw6g
+    std::stringstream conteudo;
 
     for (auto& [ano, meses]: _calendario.getCalendario()){
         for(auto& [mes, dias] : meses){
             for(auto& dia : dias){
                 file << "data " << (dia.first < 10 ? "0" : "") << dia.first << "/" << (mes < 10 ? "0" : "") << mes << "/"<< ano << std::endl;          
                 for(auto& treino : dia.second){
-                    file << "- " << treino.getNome() << " (" << treino.getDuracao() << " min, " << treino.getCalorias() << " kcal, " << treino.getLugar() << ")" << std::endl;
+                    treino->salvaTreino(&conteudo);
+                    file << conteudo.str();
+                    conteudo.clear();
+                    conteudo.str("");
                 }
             }
         }
