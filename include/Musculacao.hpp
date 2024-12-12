@@ -13,6 +13,8 @@ class Musculacao : public Treino{
         int getSeries();
         int getPeso();
 
+        bool operator==(Treino* outro);
+
         void salvaTreino(std::stringstream* out);
         void exibirTreino(std::ostream &out);
 };

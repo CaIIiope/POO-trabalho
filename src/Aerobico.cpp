@@ -30,3 +30,14 @@ void Aerobico::exibirTreino(std::ostream &out) {
     out << "Lugar: " << getLugar() << std::endl;
     out << "Intensidade: " << getIntensidade() << std::endl;
 }
+
+bool Aerobico::operator==(Treino* outro) {
+    return{
+        getNome() == outro->getNome() &&
+        getDuracao() == outro->getDuracao() &&
+        getCalorias() == outro->getCalorias() &&
+        getLugar() == outro->getLugar() &&
+        getIntensidade() == ((Aerobico*)outro)->getIntensidade()
+
+    };
+}

@@ -17,7 +17,7 @@ class Treino{
         virtual void exibirTreino(std::ostream &out) = 0;
 
         friend std::ostream& operator<<(std::ostream& out, Treino& treino);
-
+        virtual bool operator==(Treino* outro) = 0;
 
         std::string getNome();
         std::string getLugar();

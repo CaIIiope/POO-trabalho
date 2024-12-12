@@ -47,3 +47,24 @@ void Musculacao::exibirTreino(std::ostream &out){
     out << "Repeticoes: " << getRepeticoes() << std::endl;
     out << "Peso: " << getPeso() << std::endl;
 }
+
+bool Musculacao::operator==(Treino* outro){
+    std::cout << "Comparando treinos de musculação..." << std::endl;
+    std::cout << "Nome: " << getNome() << " == " << outro->getNome() << std::endl;
+    std::cout << "Duracao: " << getDuracao() << " == " << outro->getDuracao() << std::endl;
+    std::cout << "Calorias: " << getCalorias() << " == " << outro->getCalorias() << std::endl;
+    std::cout << "Lugar: " << getLugar() << " == " << outro->getLugar() << std::endl;
+    std::cout << "Series: " << getSeries() << " == " << ((Musculacao*)outro)->getSeries() << std::endl;
+    std::cout << "Repeticoes: " << getRepeticoes() << " == " << ((Musculacao*)outro)->getRepeticoes() << std::endl;
+    std::cout << "Peso: " << getPeso() << " == " << ((Musculacao*)outro)->getPeso() << std::endl;
+
+    return{
+        getNome() == outro->getNome() &&
+        getDuracao() == outro->getDuracao() &&
+        getCalorias() == outro->getCalorias() &&
+        getLugar() == outro->getLugar() &&
+        getSeries() == ((Musculacao*)outro)->getSeries() &&
+        getRepeticoes() == ((Musculacao*)outro)->getRepeticoes() &&
+        getPeso() == ((Musculacao*)outro)->getPeso()
+    };
+}

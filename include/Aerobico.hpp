@@ -11,6 +11,8 @@ public:
     void salvaTreino(std::stringstream* out);
     void exibirTreino(std::ostream &out);
 
+    bool operator==(Treino* outro);
+
 private:
     int _intensidade;
 };
