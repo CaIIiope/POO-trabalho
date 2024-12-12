@@ -14,8 +14,6 @@ class Pessoa{
         int _idade;
         Calendario _calendario;
 
-        void carregarDados();
-
     public:
         Pessoa(std::string nome, std::string pathdata, int idade);
         Pessoa(const std::string& pathdata);
@@ -25,7 +23,11 @@ class Pessoa{
         void adicionarAerobico(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int intensidade);
 
         void removerTreino(int ano, int mes, int dia, std::string& nome);
+
+        void exibirTreinos(int ano, int mes, int dia);
+
         void salvarDados();
+        void carregarDados();
 };
 
 

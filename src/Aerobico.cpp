@@ -21,3 +21,12 @@ void Aerobico::salvaTreino(std::stringstream* out) {
 
 
 }
+
+void Aerobico::exibirTreino(std::ostream &out) {
+    out << "Treino Aerobico" << std::endl;
+    out << "Nome: " << getNome() << std::endl;
+    out << "Duracao: " << getDuracao() << std::endl;
+    out << "Calorias: " << getCalorias() << std::endl;
+    out << "Lugar: " << getLugar() << std::endl;
+    out << "Intensidade: " << getIntensidade() << std::endl;
+}

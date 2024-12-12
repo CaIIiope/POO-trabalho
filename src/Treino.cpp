@@ -25,3 +25,8 @@ int Treino::getDuracao(){
 int Treino::getCalorias(){
     return _calorias;
 }
+
+std::ostream& operator<<(std::ostream& out, Treino& treino){
+    treino.exibirTreino(out);
+    return out;
+}

@@ -9,6 +9,7 @@ public:
     ~Aerobico();
     int getIntensidade();
     void salvaTreino(std::stringstream* out);
+    void exibirTreino(std::ostream &out);
 
 private:
     int _intensidade;

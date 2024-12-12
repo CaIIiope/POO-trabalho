@@ -14,6 +14,7 @@ class Musculacao : public Treino{
         int getPeso();
 
         void salvaTreino(std::stringstream* out);
+        void exibirTreino(std::ostream &out);
 };
 
 #endif

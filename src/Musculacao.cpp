@@ -36,3 +36,14 @@ void Musculacao::salvaTreino(std::stringstream* out) {
     }
     else std::cout << "kjhkjhk";
 }
+
+void Musculacao::exibirTreino(std::ostream &out){
+    out << "Treino Musculacao" << std::endl;
+    out << "Nome: " << getNome() << std::endl;
+    out << "Duracao: " << getDuracao() << std::endl;
+    out << "Calorias: " << getCalorias() << std::endl;
+    out << "Lugar: " << getLugar() << std::endl;
+    out << "Series: " << getSeries() << std::endl;
+    out << "Repeticoes: " << getRepeticoes() << std::endl;
+    out << "Peso: " << getPeso() << std::endl;
+}
