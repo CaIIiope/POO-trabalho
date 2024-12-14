@@ -10,7 +10,8 @@
 
 class Calendario{
     private:
-        std::map<int, std::map<int, std::map<int, std::vector<Treino*>>>> _calendario;
+         // Essa variavel de map indexa um vetor de treino a tres inteiros, ano, mes e dia
+        std::map<int, std::map<int, std::map<int, std::vector<Treino*>>>> _calendario; 
         bool existre_treino(int ano, int mes, int dia, Treino* treino);
     public:
         void adicionarAerobico(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int intensidade);

@@ -1,23 +1,32 @@
 #include "Calendario.hpp"
 
+// Salva um objeto da classe Aerobico no mapa calendario
 void Calendario::adicionarAerobico(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int intensidade){
+    //Cria um objeto da classe Aerobico
     Treino* treino= new Aerobico(duracao, calorias, lugar, nome, intensidade);
+    //Verifica se o treino existe e já foi salvo nesse dia
     if (existre_treino(ano, mes, dia, treino)){
         std::cout << "Treino já salvo nesse dia!" << std::endl;
         return;
     }
+    //Adiciona o treino no mapa calendario
     _calendario[ano][mes][dia].push_back(treino);
 }
 
+// Salva um objeto da classe Musculacao no mapa calendario
 void Calendario::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series, int repeticoes, int peso){
+    // Cria um objeto da classe Musculacao
     Treino* treino= new Musculacao(duracao, calorias, lugar, nome, series, repeticoes, peso);
+    // Verifica se o treino existe e já foi salvo nesse dia
     if (existre_treino(ano, mes, dia, treino)){
         std::cout << "Treino já salvo nesse dia!" << std::endl;
         return;
     }
+    // Adiciona o treino no mapa calendario
     _calendario[ano][mes][dia].push_back(treino);
 }
 
+// Verifica se um treino já foi salvo em uma data
 bool Calendario::existre_treino(int ano, int mes, int dia, Treino* treino) {
     // Verifica se a data existe no calendário
     if (_calendario.find(ano) == _calendario.end() ||
@@ -35,12 +44,14 @@ bool Calendario::existre_treino(int ano, int mes, int dia, Treino* treino) {
     return false; // Nenhum treino equivalente encontrado
 }
 
-
+// Remove treino do calendario procurando no mapa pela data e pelo nome do treino
 void Calendario::removerTreino(int ano, int mes, int dia, std::string& nome){
+    // Verifica se existe treino na data
     if (_calendario[ano][mes][dia].size() == 0){
         std::cout << "Nenhum treino agendado para essa data" << std::endl;
         return;
     }
+    // Procura o treino pela data e pelo nome
     if (_calendario.find(ano) != _calendario.end()){
         if (_calendario[ano].find(mes) != _calendario[ano].end()){
             if (_calendario[ano][mes].find(dia) != _calendario[ano][mes].end()){
@@ -61,6 +72,7 @@ void Calendario::removerTreino(int ano, int mes, int dia, std::string& nome){
 
 }
 
+// Retorna um vetor de treinos de uma data específica
 std::vector<Treino *> Calendario::getTreinos(int ano, int mes, int dia){
     if (_calendario.count(ano) && _calendario.at(ano).count(mes) && _calendario.at(ano).at(mes).count(dia)) {
         return _calendario.at(ano).at(mes).at(dia); 
@@ -76,6 +88,7 @@ Calendario::Calendario(){
 Calendario::~Calendario(){
 }
 
+// Getter para o mapa calendario
 std::map<int, std::map<int, std::map<int, std::vector<Treino*>>>> Calendario::getCalendario(){
     return _calendario;
 }

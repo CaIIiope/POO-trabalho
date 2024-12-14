@@ -10,9 +10,10 @@
 class Pessoa{
     private:
 
-        std::string _nome, _pathdata;
-        int _idade;
-        Calendario _calendario;
+        std::string _nome; // Nome do usuario 
+        std::string _pathdata;  // Caminho do arquivo que serao armazenados os dados
+        int _idade; 
+        Calendario _calendario; // Classe calendario que contera os treinos e dias
 
     public:
         Pessoa(std::string nome, std::string pathdata, int idade);

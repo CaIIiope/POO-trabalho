@@ -1,5 +1,6 @@
 #include "Treino.hpp"
 
+// Construtor da classe Treino
 Treino::Treino(int duracao, int calorias, std::string lugar, std::string nome){
     _duracao = duracao;
     _calorias = calorias;
@@ -10,6 +11,7 @@ Treino::Treino(int duracao, int calorias, std::string lugar, std::string nome){
 Treino::~Treino(){
 }
 
+// Getters do atributos privados
 std::string Treino::getNome(){
     return _nome;
 }
@@ -26,6 +28,8 @@ int Treino::getCalorias(){
     return _calorias;
 }
 
+
+// Sobrecarga do operador << para imprimir os treinos
 std::ostream& operator<<(std::ostream& out, Treino& treino){
     treino.exibirTreino(out);
     return out;

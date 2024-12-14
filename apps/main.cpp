@@ -5,6 +5,7 @@
 #include <string>
 #include <Pessoa.hpp>
 
+// A main consiste em um aninhamento de ifs e elses para a escolha de opções disponiveis ao usuario
 int main() {
     std::cout << "Bem vindo ao seu calendário de treinos!" << std::endl;
     std::string input;
@@ -21,10 +22,10 @@ int main() {
 
         std::system("clear");
 
-        if (opcao == '3') {
+        if (opcao == '3') { // Sair do programa
             std::cout << "Até mais!" << std::endl;
             break;
-        } else if (opcao == '1') {
+        } else if (opcao == '1') { // Criar novo usuario
             std::cout << "Vamos criar um novo usuário!" << std::endl;
             std::string nome, pathdata;
             int idade;
@@ -49,20 +50,20 @@ int main() {
 
             std::system("clear");
 
-            while (true) {
+            while (true) { // Apos criar novo usuario, pode-se adicionar treinos
                     std::cout << "Você deseja adicionar um treino? 1 - Sim 2 - Não" << std::endl;
                     std::getline(std::cin, input);
                     std::stringstream(input) >> opcao;
 
-                if (opcao == '2') {
+                if (opcao == '2') { // Caso o usuario nao queira adicionar treinos
                     std::cout << "Ok, você pode adicionar treinos depois!" << std::endl;
-                    pessoa.salvarDados();
+                    pessoa.salvarDados(); // Salva os dados e volta ao menu principal
 
                     sleep(2);
                     std::system("clear");
 
                     break;
-                } else if (opcao == '1') {
+                } else if (opcao == '1') { // Adicionar treino ao novo usuario
                     std::system("clear");
                     while (true) {
                         std::cout << "Escolha o tipo de treino: 1 - Musculação 2 - Aeróbico" << std::endl;
@@ -108,7 +109,7 @@ int main() {
                     char lixo;
                     dateStream >> dia >> lixo >> mes >> lixo >> ano;
 
-                    if (opcao == '1') {
+                    if (opcao == '1') { // Opcao para adicionar treino de musculacao
                         while (true) {
                             std::cout << "Digite o número de séries: ";
                             std::getline(std::cin, input);
@@ -137,7 +138,7 @@ int main() {
                         }
 
                         pessoa.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, repeticoes, peso);
-                    } else if (opcao == '2') {
+                    } else if (opcao == '2') { // Opcao para adicionar treino aerobico
                         while (true) {
                             std::cout << "Digite a intensidade: ";
                             std::getline(std::cin, input);
@@ -153,7 +154,7 @@ int main() {
                     }
                 }
             }
-        } else if (opcao == '2') {
+        } else if (opcao == '2') { // Caso o usuario queira carregar um usuario existente
             std::cout << "Digite o caminho para carregar seus dados: ";
             std::string pathdata;
             std::getline(std::cin, pathdata);
@@ -165,7 +166,7 @@ int main() {
                 std::system("clear");
                 continue;
             }
-            while (true){
+            while (true){ // Opcoes disponiveis para o usuario ja existente
                 std::system("clear");
                 std::cout << "Escolha uma opção:" << std::endl
                           << "1 - Adicionar treino" << std::endl
@@ -177,11 +178,11 @@ int main() {
                 std::stringstream ss(input);
                 ss >> opcao;
 
-                if (opcao == '4') {
+                if (opcao == '4') { // Voltar ao menu principal
                     std::cout << "Até mais!" << std::endl;
                     pessoa.salvarDados();
                     break;
-                } else if (opcao == '1') { 
+                } else if (opcao == '1') {  // Caso o usuario queira adicionar um treino
                     std::system("clear");
                     while (true) {
                         std::cout << "Escolha o tipo de treino: 1 - Musculação 2 - Aeróbico" << std::endl;
@@ -226,7 +227,7 @@ int main() {
                     char lixo;
                     dateStream >> dia >> lixo >> mes >> lixo >> ano;
 
-                    if (opcao == '1') {
+                    if (opcao == '1') { // Adicionar treino de musculacao
                         while (true) {
                             std::cout << "Digite o número de séries: ";
                             std::getline(std::cin, input);
@@ -255,7 +256,7 @@ int main() {
                         }
 
                         pessoa.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, repeticoes, peso);
-                    } else if (opcao == '2') {
+                    } else if (opcao == '2') { // Adicionar treino aerobico
                         while (true) {
                             std::cout << "Digite a intensidade: ";
                             std::getline(std::cin, input);
@@ -267,11 +268,11 @@ int main() {
 
                         pessoa.adicionarAerobico(ano, mes, dia, duracao, calorias, lugar, nome, intensidade);
                     } 
-                } else if (opcao == '2') {
+                } else if (opcao == '2') { // Opcao para remover treino 
                     while (true){
                         std::system("clear");
                         std::cout << "1 - Informe a data dd/mm/aaaa e o nome do treino" << std::endl
-                                  << "2 - Sair" << std::endl;
+                                  << "2 - Voltar" << std::endl;
                         std::getline(std::cin, input);
                         std::stringstream(input) >> opcao;
                         if (opcao == '1'){
@@ -299,7 +300,7 @@ int main() {
                     }
                     
                 }
-                else if (opcao == '3'){
+                else if (opcao == '3'){ // Opcao para exibir treinos
                     while (true){
                         std::system("clear");
                         std::cout << "1 - Informe a data dd/mm/aaaa" << std::endl
