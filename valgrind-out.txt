@@ -1,0 +1,148 @@
+==7019== Memcheck, a memory error detector
+==7019== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==7019== Using Valgrind-3.23.0-c54d316124-20240426 and LibVEX; rerun with -h for copyright info
+==7019== Command: ././bin/programaTrab
+==7019== Parent PID: 7018
+==7019== 
+--7019-- 
+--7019-- Valgrind options:
+--7019--    --leak-check=full
+--7019--    --show-leak-kinds=all
+--7019--    --track-origins=yes
+--7019--    --verbose
+--7019--    --log-file=valgrind-out.txt
+--7019-- Contents of /proc/version:
+--7019--   Linux version 6.11.10-200.fc40.x86_64 (mockbuild@14961705b29e41cda3716e69b93d934c) (gcc (GCC) 14.2.1 20240912 (Red Hat 14.2.1-3), GNU ld version 2.41-37.fc40) #1 SMP PREEMPT_DYNAMIC Sat Nov 23 00:53:13 UTC 2024
+--7019-- 
+--7019-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-fma
+--7019-- Page sizes: currently 4096, max supported 4096
+--7019-- Valgrind library directory: /usr/libexec/valgrind
+--7019-- Reading syms from /home/lucasg/Documents/USP/4 semestre/POO/POO-trabalho/bin/programaTrab
+--7019-- Reading syms from /usr/lib64/ld-linux-x86-64.so.2
+--7019-- Warning: cross-CU LIMITATION: some inlined fn names
+--7019-- might be shown as UnknownInlinedFun
+--7019-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--7019--    object doesn't have a dynamic symbol table
+--7019-- Scheduler: using generic scheduler lock implementation.
+--7019-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==7019== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-7019-by-lucasg-on-fedora
+==7019== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-7019-by-lucasg-on-fedora
+==7019== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-7019-by-lucasg-on-fedora
+==7019== 
+==7019== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==7019== don't want to do, unless you know exactly what you're doing,
+==7019== or are doing some strange experiment):
+==7019==   /usr/libexec/valgrind/../../bin/vgdb --pid=7019 ...command...
+==7019== 
+==7019== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==7019==   /path/to/gdb ././bin/programaTrab
+==7019== and then give GDB the following command
+==7019==   target remote | /usr/libexec/valgrind/../../bin/vgdb --pid=7019
+==7019== --pid is optional if only one valgrind process is running
+==7019== 
+==7019== Downloading debug info for /usr/libexec/valgrind/memcheck-amd64-linux...
+--7019--   Considering /home/lucasg/.cache/debuginfod_client/40e5ee157058b38bbd9a1028c320bbe4d0442c8b/debuginfo ..
+--7019--   .. CRC is valid
+==7019== Successfully downloaded debug file for /usr/libexec/valgrind/memcheck-amd64-linux
+==7019== Downloading debug info for /home/lucasg/.cache/debuginfod_client/40e5ee157058b38bbd9a1028c320bbe4d0442c8b/debuginfo...
+--7019--   Considering /home/lucasg/.cache/debuginfod_client/2f6c4fea722ca152c38a321408ce4a7a67d9a28f/debuginfo ..
+--7019--   .. build-id is valid
+==7019== Successfully downloaded debug file for /home/lucasg/.cache/debuginfod_client/40e5ee157058b38bbd9a1028c320bbe4d0442c8b/debuginfo
+--7019-- REDIR: 0x4026360 (ld-linux-x86-64.so.2:strlen) redirected to 0x5821654f (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--7019-- REDIR: 0x4024d20 (ld-linux-x86-64.so.2:strcmp) redirected to 0x58216569 (vgPlain_amd64_linux_REDIR_FOR_strcmp)
+--7019-- REDIR: 0x4024af0 (ld-linux-x86-64.so.2:index) redirected to 0x58216584 (vgPlain_amd64_linux_REDIR_FOR_index)
+--7019-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--7019-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==7019== WARNING: new redirection conflicts with existing -- ignoring it
+--7019--     old: 0x04024d20 (strcmp              ) R-> (0000.0) 0x58216569 vgPlain_amd64_linux_REDIR_FOR_strcmp
+--7019--     new: 0x04024d20 (strcmp              ) R-> (2016.0) 0x0484e350 strcmp
+==7019== WARNING: new redirection conflicts with existing -- ignoring it
+--7019--     old: 0x04026360 (strlen              ) R-> (0000.0) 0x5821654f vgPlain_amd64_linux_REDIR_FOR_strlen
+--7019--     new: 0x04026360 (strlen              ) R-> (2007.0) 0x0484d000 strlen
+--7019-- REDIR: 0x4024150 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4852aa0 (mempcpy)
+--7019-- Reading syms from /usr/lib64/libstdc++.so.6.0.33
+--7019-- Reading syms from /usr/lib64/libm.so.6
+--7019-- Reading syms from /usr/lib64/libgcc_s-14-20240912.so.1
+--7019-- Reading syms from /usr/lib64/libc.so.6
+==7019== Downloading debug info for /usr/lib64/libc.so.6...
+--7019--   Considering /home/lucasg/.cache/debuginfod_client/77c77fee058b19c6f001cf2cb0371ce3b8341211/debuginfo ..
+--7019--   .. CRC is valid
+==7019== Successfully downloaded debug file for /usr/lib64/libc.so.6
+--7019-- REDIR: 0x4026500 (ld-linux-x86-64.so.2:strncmp) redirected to 0x484db00 (strncmp)
+--7019-- REDIR: 0x4c93890 (libc.so.6:strnlen) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c93920 (libc.so.6:strpbrk) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c91910 (libc.so.6:strcmp) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4ca9000 (libc.so.6:wcsnlen) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c90910 (libc.so.6:memset) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4ca8700 (libc.so.6:wcslen) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4d0c100 (libc.so.6:__memcpy_chk) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c90880 (libc.so.6:memrchr) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4ca8fa0 (libc.so.6:wcsncpy) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c8fdb0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4ca74e0 (libc.so.6:wcschr) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c91800 (libc.so.6:index) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c93950 (libc.so.6:rindex) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4ca7590 (libc.so.6:wcscmp) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c90b30 (libc.so.6:stpncpy) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4cb4ec0 (libc.so.6:wmemchr) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c93730 (libc.so.6:strncmp) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c90b90 (libc.so.6:strcasecmp) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c92b20 (libc.so.6:strcspn) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4ca84d0 (libc.so.6:wcscpy) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c91790 (libc.so.6:strcat) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c93630 (libc.so.6:strncasecmp_l) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c91880 (libc.so.6:strchrnul) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c8fcc0 (libc.so.6:bcmp) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c92ab0 (libc.so.6:strcpy) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c90c30 (libc.so.6:strcasecmp_l) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c93500 (libc.so.6:strlen) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c937d0 (libc.so.6:strncpy) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4cb4f40 (libc.so.6:wmemcmp) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4d0c220 (libc.so.6:__memmove_chk) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+==7019== WARNING: new redirection conflicts with existing -- ignoring it
+--7019--     old: 0x04d510d0 (__memcpy_chk_avx_una) R-> (2030.0) 0x04852bb0 __memcpy_chk
+--7019--     new: 0x04d510d0 (__memcpy_chk_avx_una) R-> (2024.0) 0x048524b0 __memmove_chk
+--7019-- REDIR: 0x4c90ac0 (libc.so.6:stpcpy) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c90640 (libc.so.6:memmove) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+==7019== Preferring higher priority redirection:
+--7019--     old: 0x04d51100 (__memcpy_avx_unalign) R-> (2018.0) 0x0484fa20 __memcpy_avx_unaligned_erms
+--7019--     new: 0x04d51100 (__memcpy_avx_unalign) R-> (2018.1) 0x048517b0 memmove
+--7019-- REDIR: 0x4c8fc40 (libc.so.6:memchr) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c93b20 (libc.so.6:strspn) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4ca7110 (libc.so.6:wcpncpy) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c90760 (libc.so.6:mempcpy) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c93590 (libc.so.6:strncasecmp) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4c94470 (libc.so.6:strstr) redirected to 0x48381ea (_vgnU_ifunc_wrapper)
+--7019-- REDIR: 0x4d55cf0 (libc.so.6:__strrchr_avx2) redirected to 0x484c7e0 (rindex)
+--7019-- REDIR: 0x4d53e40 (libc.so.6:__strlen_avx2) redirected to 0x484cee0 (strlen)
+--7019-- REDIR: 0x4d509a0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4850da0 (bcmp)
+--7019-- REDIR: 0x4d54f20 (libc.so.6:__strncmp_avx2) redirected to 0x484d920 (strncmp)
+--7019-- REDIR: 0x4c8bdd0 (libc.so.6:malloc) redirected to 0x48437f0 (malloc)
+==7019== Downloading debug info for /usr/lib64/libstdc++.so.6.0.33...
+--7019--   Considering /home/lucasg/.cache/debuginfod_client/efdde18722aa72a0a779270371aeee5a9f6ddf87/debuginfo ..
+--7019--   .. CRC is valid
+==7019== Successfully downloaded debug file for /usr/lib64/libstdc++.so.6.0.33
+==7019== Downloading debug info for /home/lucasg/.cache/debuginfod_client/efdde18722aa72a0a779270371aeee5a9f6ddf87/debuginfo...
+--7019--   Considering /home/lucasg/.cache/debuginfod_client/8aed345d3e2ed647298033e4affa4135d0c1e630/debuginfo ..
+--7019--   .. build-id is valid
+==7019== Successfully downloaded debug file for /home/lucasg/.cache/debuginfod_client/efdde18722aa72a0a779270371aeee5a9f6ddf87/debuginfo
+==7019== Downloading debug info for /home/lucasg/Documents/USP/4 semestre/POO/POO-trabalho/bin/programaTrab...
+==7019== Server query failed: No such file or directory
+--7019-- REDIR: 0x4d510c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4852660 (mempcpy)
+--7019-- REDIR: 0x4d51100 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48517b0 (memmove)
+--7019-- REDIR: 0x4d53260 (libc.so.6:__strchr_avx2) redirected to 0x484ca20 (index)
+--7019-- REDIR: 0x4926430 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4845708 (operator new[](unsigned long))
+--7019-- REDIR: 0x4924590 (libstdc++.so.6:operator delete[](void*)) redirected to 0x484959f (operator delete[](void*))
+--7019-- REDIR: 0x4c8c4d0 (libc.so.6:free) redirected to 0x4846b11 (free)
+--7019-- REDIR: 0x49263d0 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x4843f7a (operator new(unsigned long))
+--7019-- REDIR: 0x4d53690 (libc.so.6:__strcmp_avx2) redirected to 0x484e1d0 (strcmp)
+--7019-- REDIR: 0x4924570 (libstdc++.so.6:operator delete(void*, unsigned long)) redirected to 0x4847ab7 (operator delete(void*, unsigned long))
+--7019-- REDIR: 0x4924560 (libstdc++.so.6:operator delete(void*)) redirected to 0x48475d3 (operator delete(void*))
+==7019== 
+==7019== HEAP SUMMARY:
+==7019==     in use at exit: 0 bytes in 0 blocks
+==7019==   total heap usage: 21 allocs, 21 frees, 94,488 bytes allocated
+==7019== 
+==7019== All heap blocks were freed -- no leaks are possible
+==7019== 
+==7019== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
