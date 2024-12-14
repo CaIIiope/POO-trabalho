@@ -35,6 +35,14 @@ void Aerobico::exibirTreino(std::ostream &out) {
 
 // Sobrecarga do operador de comparação para verificar se dois treinos são iguais
 bool Aerobico::operator==(Treino* outro) {
+
+    // Verifica se 'outro' é realmente uma instância de aerobico
+    Aerobico* outroaerobico = dynamic_cast<Aerobico*>(outro);
+    if (outroaerobico == nullptr) {
+        std::cout << "O treino comparado não é de aerobico." << std::endl;
+        return false;
+    }
+
     return{
         getNome() == outro->getNome() &&
         getDuracao() == outro->getDuracao() &&

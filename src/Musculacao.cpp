@@ -47,6 +47,15 @@ void Musculacao::exibirTreino(std::ostream &out){
 }
 
 bool Musculacao::operator==(Treino* outro){
+
+    // Verifica se 'outro' é realmente uma instância de Musculacao
+    Musculacao* outroMusculacao = dynamic_cast<Musculacao*>(outro);
+    if (outroMusculacao == nullptr) {
+        std::cout << "O treino comparado não é de musculação." << std::endl;
+        return false;
+    }
+
+
     std::cout << "Comparando treinos de musculação..." << std::endl;
     std::cout << "Nome: " << getNome() << " == " << outro->getNome() << std::endl;
     std::cout << "Duracao: " << getDuracao() << " == " << outro->getDuracao() << std::endl;
