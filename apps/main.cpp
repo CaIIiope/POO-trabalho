@@ -181,7 +181,7 @@ int main() {
                     std::cout << "Até mais!" << std::endl;
                     pessoa.salvarDados();
                     break;
-                } else if (opcao == '1') {
+                } else if (opcao == '1') { 
                     std::system("clear");
                     while (true) {
                         std::cout << "Escolha o tipo de treino: 1 - Musculação 2 - Aeróbico" << std::endl;
