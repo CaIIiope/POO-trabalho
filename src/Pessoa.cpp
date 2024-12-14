@@ -72,12 +72,11 @@ void Pessoa::salvarDados(){
     file.close();
 }
 
-void Pessoa::carregarDados(){
+int Pessoa::carregarDados(){
     std::ifstream file(_pathdata);
-    if(!file.is_open()){
-        std::cout << "Erro ao abrir arquivo" << std::endl;
-        return;
-    }
+    if(!file.is_open())
+        return 0;
+    
     std::string line;
 
 // carrega o nome e a idade
@@ -157,5 +156,6 @@ void Pessoa::carregarDados(){
     }
     
     file.close();
+    return 1;
 
 } 

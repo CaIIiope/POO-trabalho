@@ -27,7 +27,7 @@ class Pessoa{
         void exibirTreinos(int ano, int mes, int dia);
 
         void salvarDados();
-        void carregarDados();
+        int carregarDados();
 };
 
 
