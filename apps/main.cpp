@@ -163,7 +163,7 @@ int main() {
                 std::cout << "Erro ao carregar dados. Verifique o caminho informado." << std::endl;
                 sleep(2);
                 std::system("clear");
-                continue;;
+                continue;
             }
             while (true){
                 std::system("clear");
