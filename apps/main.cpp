@@ -58,7 +58,6 @@ int main() {
                 if (opcao == '2') { // Caso o usuario nao queira adicionar treinos
                     std::cout << "Ok, você pode adicionar treinos depois!" << std::endl;
                     pessoa.salvarDados(); // Salva os dados e volta ao menu principal
-
                     sleep(2);
                     std::system("clear");
 
@@ -180,7 +179,7 @@ int main() {
 
                 if (opcao == '4') { // Voltar ao menu principal
                     std::cout << "Até mais!" << std::endl;
-                    pessoa.salvarDados();
+                    pessoa.salvarDados(); 
                     break;
                 } else if (opcao == '1') {  // Caso o usuario queira adicionar um treino
                     std::system("clear");
@@ -337,5 +336,6 @@ int main() {
             std::cout << "Opção inválida" << std::endl;
         }
     }
+
     return 0;
 }

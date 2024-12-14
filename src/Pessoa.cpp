@@ -26,6 +26,7 @@ void Pessoa::adicionarMusculacao(int ano, int mes, int dia, int duracao, int cal
 
 // Adiciona um treino aerobico no calendario
 void Pessoa::adicionarAerobico(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int intensidade){
+    std::cout << "Adicionando treino aeróbico..." << std::endl;
     _calendario.adicionarAerobico(ano, mes, dia, duracao, calorias, lugar, nome, intensidade);
 }
 
@@ -80,9 +81,7 @@ void Pessoa::salvarDados(){
                 }
             }
         }
-
     }
-
     file.close();
 }
 

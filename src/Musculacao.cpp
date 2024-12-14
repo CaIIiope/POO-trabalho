@@ -24,7 +24,6 @@ int Musculacao::getPeso(){
 
 void Musculacao::salvaTreino(std::stringstream* out) {                                                                                                                                                                              
     if (out) {
-        std::cout << "Salvando treino de musculação..." << std::endl;
         *out << "Treino Musculacao" << std::endl;
         *out << "Nome: " << getNome() << std::endl;
         *out << "Duracao: " << getDuracao() << std::endl;
@@ -34,7 +33,6 @@ void Musculacao::salvaTreino(std::stringstream* out) {
         *out << "Repeticoes: " << getRepeticoes() << std::endl;
         *out << "Peso: " << getPeso() << std::endl;
     }
-    else std::cout << "kjhkjhk";
 }
 
 void Musculacao::exibirTreino(std::ostream &out){

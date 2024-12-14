@@ -18,3 +18,6 @@ run:
 clean:
 	rm -f $(OBJ)/*.o
 	rm -f $(BIN)/programaTrab
+
+valgrind:
+	valgrind ./$(BIN)/programaTrab --leak-check=full
