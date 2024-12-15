@@ -18,9 +18,9 @@ void Calendario::adicionarAerobico(int ano, int mes, int dia, int duracao, int c
 }
 
 // Salva um objeto da classe Musculacao no mapa calendario
-void Calendario::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series){
+void Calendario::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series, std::vector<std::pair<int, float>> rep_peso){
     // Cria um objeto da classe Musculacao
-    Treino* treino= new Musculacao(duracao, calorias, lugar, nome, series);
+    Treino* treino= new Musculacao(duracao, calorias, lugar, nome, series, rep_peso);
     // Verifica se o treino existe e já foi salvo nesse dia
     if (existre_treino(ano, mes, dia, treino)){
         std::cout << "Treino já salvo nesse dia!" << std::endl;
@@ -66,6 +66,7 @@ void Calendario::removerTreino(int ano, int mes, int dia, std::string& nome){
                 for (int i = 0; i < _calendario[ano][mes][dia].size(); i++){
                     if (_calendario[ano][mes][dia][i]->getNome() == nome){
                         _calendario[ano][mes][dia].erase(_calendario[ano][mes][dia].begin() + i);
+                        std::cout << "Treino removido" << std::endl;
                         return;
                     }
                 }

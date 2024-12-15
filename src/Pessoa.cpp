@@ -21,7 +21,32 @@ Pessoa::~Pessoa(){
 // Adiciona um treino de musculação no calendario
 void Pessoa::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series){
     std::cout << "Adicionando treino de musculação..." << std::endl;
-    _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series);
+    std::vector<std::pair<int, float>> rep_peso;
+    std::pair<int, float> conjunto;
+    int repeticoes;
+    float peso;
+    std::string input;
+    for (int i = 0; i < series; i++){  // Para o numero de series do exercicio
+        while (true) {
+            std::cout << "Digite as repeticoes da serie  " << i+1 << " :";
+            std::getline(std::cin, input);
+            if (std::stringstream(input) >> repeticoes) 
+                break;
+            else
+                std::cout << "Duração inválida. Por favor, insira um número." << std::endl;
+        }
+        while (true) {
+            std::cout << "Digite o peso da serie  " << i+1 << " :";
+            std::getline(std::cin, input);
+            if (std::stringstream(input) >> peso) 
+                break;
+            else
+                std::cout << "Duração inválida. Por favor, insira um número." << std::endl;
+        }
+        conjunto = std::make_pair(repeticoes, peso);
+        rep_peso.push_back(conjunto);
+    }   
+    _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, rep_peso);
 }
 
 // Adiciona um treino aerobico no calendario
@@ -86,41 +111,39 @@ void Pessoa::salvarDados(){
 }
 
 // Carrega os dados do usuario do arquivo texto
-int Pessoa::carregarDados(){
+int Pessoa::carregarDados() {
     std::ifstream file(_pathdata);
     // Verifica se o arquivo existe
-    if(!file.is_open())
+    if (!file.is_open())
         return 0;
-    
+
     std::string line;
 
-// carrega o nome e a idade
+    // Carrega o nome e a idade
     std::getline(file, _nome);
     std::getline(file, line);
     _idade = std::stoi(line);
 
     int ano, mes, dia;
-    int position;
     std::string dado;
 
     std::string nome, lugar;
-    int duracao, calorias, series, repeticoes, peso, intensidade;
+    int duracao, calorias, series, repeticoes;
+    float peso, intensidade;
 
-    while (std::getline(file, line)){
-        
-        //Le a data do calendario que esta no arquivo
-        if (line.substr(0, 4).compare("data") == 0){
+    while (std::getline(file, line)) {
+        // Lê a data do calendário que está no arquivo
+        if (line.substr(0, 4) == "data") {
             dado = line.substr(5, 2);
             dia = std::atoi(dado.c_str());
             dado = line.substr(8, 2);
             mes = std::atoi(dado.c_str());
             dado = line.substr(11);
             ano = std::atoi(dado.c_str());
-
         }
-        // Le os atributos da classe Musculacao
-        if (line.compare("Treino Musculacao") == 0){
 
+        // Lê os atributos da classe Musculacao
+        if (line == "Treino Musculacao") {
             std::getline(file, line);
             nome = line.substr(6);
 
@@ -136,18 +159,27 @@ int Pessoa::carregarDados(){
             std::getline(file, line);
             series = std::atoi(line.substr(8).c_str());
 
-            std::getline(file, line);
-            repeticoes = std::atoi(line.substr(12).c_str());
+            // Vetor para armazenar as séries
+            std::vector<std::pair<int, float>> rep_peso;
 
-            std::getline(file, line);
-            peso = std::atoi(line.substr(6).c_str());
+            // Lê os detalhes de cada série
+            for (int i = 0; i < series; ++i) {
+                std::getline(file, line);
+                size_t pos_repeticoes = line.find("repetições,");
+                size_t pos_peso = line.find(",", pos_repeticoes + 12);
 
-            _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series);
+                repeticoes = std::atoi(line.substr(8, pos_repeticoes - 8).c_str());
+                peso = std::atof(line.substr(pos_peso + 2).c_str());
 
+                rep_peso.emplace_back(repeticoes, peso);
+            }
+
+            // Adiciona o treino ao calendário
+            _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, rep_peso);
         }
-        // Le os atributos da classe Aerobico
-        if (line.compare("Treino Aerobico") == 0){
 
+        // Lê os atributos da classe Aerobico
+        if (line == "Treino Aerobico") {
             std::getline(file, line);
             nome = line.substr(6);
 
@@ -163,14 +195,11 @@ int Pessoa::carregarDados(){
             std::getline(file, line);
             intensidade = std::atoi(line.substr(12).c_str());
 
+            // Adiciona o treino ao calendário
             _calendario.adicionarAerobico(ano, mes, dia, duracao, calorias, lugar, nome, intensidade);
-
         }
-
-
     }
-    
+
     file.close();
     return 1;
-
-} 
+}

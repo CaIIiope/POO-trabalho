@@ -252,8 +252,6 @@ int main() {
                             std::getline(std::cin, nome);
 
                             pessoa.removerTreino(ano, mes, dia, nome);
-
-                            std::cout << "Treino Removido!" << std::endl;
                             sleep(2);
                             std::system("clear");
                         } else if (opcao == '2'){

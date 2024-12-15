@@ -2,32 +2,10 @@
 
 // Construtor da classe Musculacao, derivada da classe Treino
 // Recebe como parâmetro o numero de series para adicionar ao vetor de pares {repetições, peso}
-Musculacao::Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int series) : Treino(duracao, calorias, lugar, nome){
+Musculacao::Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int series, std::vector<std::pair<int, float>> rep_peso) : Treino(duracao, calorias, lugar, nome){
     _series = series;
-    int repeticoes;
-    float peso;
-    std::pair<int, float> conjunto;
-    std::string input;
-    for (int i = 0; i < _series; i++){  // Para o numero de series do exercicio
-        while (true) {
-            std::cout << "Digite as repeticoes da serie  " << i+1 << " :";
-            std::getline(std::cin, input);
-            if (std::stringstream(input) >> repeticoes) 
-                break;
-            else
-                std::cout << "Duração inválida. Por favor, insira um número." << std::endl;
-        }
-        while (true) {
-            std::cout << "Digite o peso da serie  " << i+1 << " :";
-            std::getline(std::cin, input);
-            if (std::stringstream(input) >> peso) 
-                break;
-            else
-                std::cout << "Duração inválida. Por favor, insira um número." << std::endl;
-        }
-        conjunto = std::make_pair(repeticoes, peso);
-        _rep_peso.push_back(conjunto);
-    }   
+    _rep_peso = rep_peso;
+
 }
 
 Musculacao::~Musculacao(){
@@ -46,7 +24,7 @@ std::pair<int, float> Musculacao::getRepeticoesEPeso(int serie){
     }
     return _rep_peso[serie];
 }
-
+ 
 // Getter para o vetor de pares {repetições, peso}
 std::vector<std::pair<int, float>>& Musculacao::getAllRepeticoesEPeso(){
     return _rep_peso;
@@ -77,7 +55,7 @@ void Musculacao::exibirTreino(std::ostream &out){
     out << "Duracao: " << getDuracao() << std::endl;
     out << "Calorias: " << getCalorias() << std::endl;
     out << "Lugar: " << getLugar() << std::endl;
-    out << "Series: " << getSeries() << std::endl;
+    out << "Series: " << getSeries() << std::endl; 
     out << "Detalhes das séries:" << std::endl;
     for (size_t i = 0; i < _rep_peso.size(); ++i) {
         out << "   Série " << i + 1 << ": "

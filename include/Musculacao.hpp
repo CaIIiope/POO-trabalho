@@ -6,7 +6,7 @@ class Musculacao : public Treino{
         int _series;
         std::vector<std::pair<int, float>> _rep_peso; // Vetor de pares {repetições, peso} para cada série
     public:
-        Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int series);
+        Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int series, std::vector<std::pair<int, float>> rep_peso);
         ~Musculacao();
         int getSeries();
         std::pair<int, float> getRepeticoesEPeso(int serie); 

@@ -1,0 +1,63 @@
+Caio Florentin de Oliveira
+19
+data 13/12/2024
+Treino Musculacao
+Nome: Supino inclinado
+Duracao: 20
+Calorias: 100
+Lugar: cav
+Series: 4
+Detalhes das séries:
+   Série 1: 0 repetições, 0
+   Série 2: 0 repetições, 0
+   Série 3: 0 repetições, 20
+   Série 4: 0 repetições, 20
+Treino Musculacao
+Nome: cruxificio
+Duracao: 14
+Calorias: 70
+Lugar: cav
+Series: 4
+Detalhes das séries:
+   Série 1: 0 repetições, 0
+   Série 2: 0 repetições, 0
+   Série 3: 0 repetições, 8
+   Série 4: 0 repetições, 9
+Treino Aerobico
+Nome: eseteira
+Duracao: 20
+Calorias: 180
+Lugar: cav
+Intensidade: 2
+data 14/12/2024
+Treino Musculacao
+Nome: agachamento
+Duracao: 20
+Calorias: 200
+Lugar: 1
+Series: 4
+Detalhes das séries:
+   Série 1: 0 repetições, 0
+   Série 2: 0 repetições, 0
+   Série 3: 0 repetições, 15
+   Série 4: 0 repetições, 20
+Treino Musculacao
+Nome: exetensora
+Duracao: 20
+Calorias: 200
+Lugar: cav
+Series: 3
+Detalhes das séries:
+   Série 1: 0 repetições, 0
+   Série 2: 0 repetições, 10
+   Série 3: 0 repetições, 10
+data 15/12/2024
+Treino Musculacao
+Nome: puxada
+Duracao: 20
+Calorias: 20
+Lugar: cav
+Series: 2
+Detalhes das séries:
+   Série 1: 2 repetições, 2
+   Série 2: 2 repetições, 2
