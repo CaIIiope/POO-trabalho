@@ -1,13 +1,14 @@
 #include <Musculacao.hpp>
 
-
+// Construtor da classe Musculacao, derivada da classe Treino
+// Recebe como parâmetro o numero de series para adicionar ao vetor de pares {repetições, peso}
 Musculacao::Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int series) : Treino(duracao, calorias, lugar, nome){
     _series = series;
     int repeticoes;
     float peso;
     std::pair<int, float> conjunto;
     std::string input;
-    for (int i = 0; i < _series; i++){
+    for (int i = 0; i < _series; i++){  // Para o numero de series do exercicio
         while (true) {
             std::cout << "Digite as repeticoes da serie  " << i+1 << " :";
             std::getline(std::cin, input);
@@ -30,12 +31,15 @@ Musculacao::Musculacao(int duracao, int calorias, std::string lugar, std::string
 }
 
 Musculacao::~Musculacao(){
+
 }
 
+// Getter para o número de séries
 int Musculacao::getSeries(){
     return _series;
 }
 
+// Getter para o par {repetições, peso} de uma série específica
 std::pair<int, float> Musculacao::getRepeticoesEPeso(int serie){
     if (serie < 0 || serie >= _series) {
         throw std::out_of_range("Índice da série inválido.");
@@ -43,10 +47,12 @@ std::pair<int, float> Musculacao::getRepeticoesEPeso(int serie){
     return _rep_peso[serie];
 }
 
+// Getter para o vetor de pares {repetições, peso}
 std::vector<std::pair<int, float>>& Musculacao::getAllRepeticoesEPeso(){
     return _rep_peso;
 }
 
+// Salva as informações do treino em um stringstream por referencia para ser salvo no arquivo
 void Musculacao::salvaTreino(std::stringstream* out) {                                                                                                                                                                              
     if (out) {
         *out << "Treino Musculacao" << std::endl;
@@ -64,6 +70,7 @@ void Musculacao::salvaTreino(std::stringstream* out) {
     }
 }
 
+// Exibe as informações do treino no terminal
 void Musculacao::exibirTreino(std::ostream &out){
     out << "Treino Musculacao" << std::endl;
     out << "Nome: " << getNome() << std::endl;
@@ -78,7 +85,7 @@ void Musculacao::exibirTreino(std::ostream &out){
         << _rep_peso[i].second << std::endl;
     }
 }
-
+// Sobrecarga do operador de comparação para verificar se dois treinos são iguais
 bool Musculacao::operator==(Treino* outro){
 
     // Verifica se 'outro' é realmente uma instância de Musculacao
