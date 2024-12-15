@@ -18,9 +18,9 @@ void Calendario::adicionarAerobico(int ano, int mes, int dia, int duracao, int c
 }
 
 // Salva um objeto da classe Musculacao no mapa calendario
-void Calendario::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series, int repeticoes, int peso){
+void Calendario::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series){
     // Cria um objeto da classe Musculacao
-    Treino* treino= new Musculacao(duracao, calorias, lugar, nome, series, repeticoes, peso);
+    Treino* treino= new Musculacao(duracao, calorias, lugar, nome, series);
     // Verifica se o treino existe e já foi salvo nesse dia
     if (existre_treino(ano, mes, dia, treino)){
         std::cout << "Treino já salvo nesse dia!" << std::endl;

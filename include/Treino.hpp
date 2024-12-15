@@ -5,7 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
-
+#include <vector>
 class Treino{
     private:
         int _duracao, _calorias;

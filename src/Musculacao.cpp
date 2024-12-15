@@ -1,25 +1,50 @@
 #include <Musculacao.hpp>
 
 
-Musculacao::Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int repeticoes, int series, int peso) : Treino(duracao, calorias, lugar, nome){
-    _peso = peso;
-    _repeticoes = repeticoes;
+Musculacao::Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int series) : Treino(duracao, calorias, lugar, nome){
     _series = series;
+    int repeticoes;
+    float peso;
+    std::pair<int, float> conjunto;
+    std::string input;
+    for (int i = 0; i < _series; i++){
+        while (true) {
+            std::cout << "Digite as repeticoes da serie  " << i+1 << " :";
+            std::getline(std::cin, input);
+            if (std::stringstream(input) >> repeticoes) 
+                break;
+            else
+                std::cout << "Duração inválida. Por favor, insira um número." << std::endl;
+        }
+        while (true) {
+            std::cout << "Digite o peso da serie  " << i+1 << " :";
+            std::getline(std::cin, input);
+            if (std::stringstream(input) >> peso) 
+                break;
+            else
+                std::cout << "Duração inválida. Por favor, insira um número." << std::endl;
+        }
+        conjunto = std::make_pair(repeticoes, peso);
+        _rep_peso.push_back(conjunto);
+    }   
 }
 
 Musculacao::~Musculacao(){
-}
-
-int Musculacao::getRepeticoes(){
-    return _repeticoes;
 }
 
 int Musculacao::getSeries(){
     return _series;
 }
 
-int Musculacao::getPeso(){
-    return _peso;
+std::pair<int, float> Musculacao::getRepeticoesEPeso(int serie){
+    if (serie < 0 || serie >= _series) {
+        throw std::out_of_range("Índice da série inválido.");
+    }
+    return _rep_peso[serie];
+}
+
+std::vector<std::pair<int, float>>& Musculacao::getAllRepeticoesEPeso(){
+    return _rep_peso;
 }
 
 void Musculacao::salvaTreino(std::stringstream* out) {                                                                                                                                                                              
@@ -30,8 +55,12 @@ void Musculacao::salvaTreino(std::stringstream* out) {
         *out << "Calorias: " << getCalorias() << std::endl;
         *out << "Lugar: " << getLugar() << std::endl;
         *out << "Series: " << getSeries() << std::endl;
-        *out << "Repeticoes: " << getRepeticoes() << std::endl;
-        *out << "Peso: " << getPeso() << std::endl;
+        *out << "Detalhes das séries:" << std::endl;
+        for (size_t i = 0; i < _rep_peso.size(); ++i) {
+            *out << "   Série " << i + 1 << ": "
+                << _rep_peso[i].first << " repetições, "
+                << _rep_peso[i].second << std::endl;
+        }
     }
 }
 
@@ -42,8 +71,12 @@ void Musculacao::exibirTreino(std::ostream &out){
     out << "Calorias: " << getCalorias() << std::endl;
     out << "Lugar: " << getLugar() << std::endl;
     out << "Series: " << getSeries() << std::endl;
-    out << "Repeticoes: " << getRepeticoes() << std::endl;
-    out << "Peso: " << getPeso() << std::endl;
+    out << "Detalhes das séries:" << std::endl;
+    for (size_t i = 0; i < _rep_peso.size(); ++i) {
+        out << "   Série " << i + 1 << ": "
+        << _rep_peso[i].first << " repetições, "
+        << _rep_peso[i].second << std::endl;
+    }
 }
 
 bool Musculacao::operator==(Treino* outro){
@@ -55,23 +88,12 @@ bool Musculacao::operator==(Treino* outro){
         return false;
     }
 
-
-    std::cout << "Comparando treinos de musculação..." << std::endl;
-    std::cout << "Nome: " << getNome() << " == " << outro->getNome() << std::endl;
-    std::cout << "Duracao: " << getDuracao() << " == " << outro->getDuracao() << std::endl;
-    std::cout << "Calorias: " << getCalorias() << " == " << outro->getCalorias() << std::endl;
-    std::cout << "Lugar: " << getLugar() << " == " << outro->getLugar() << std::endl;
-    std::cout << "Series: " << getSeries() << " == " << ((Musculacao*)outro)->getSeries() << std::endl;
-    std::cout << "Repeticoes: " << getRepeticoes() << " == " << ((Musculacao*)outro)->getRepeticoes() << std::endl;
-    std::cout << "Peso: " << getPeso() << " == " << ((Musculacao*)outro)->getPeso() << std::endl;
-
     return{
-        getNome() == outro->getNome() &&
-        getDuracao() == outro->getDuracao() &&
-        getCalorias() == outro->getCalorias() &&
-        getLugar() == outro->getLugar() &&
-        getSeries() == ((Musculacao*)outro)->getSeries() &&
-        getRepeticoes() == ((Musculacao*)outro)->getRepeticoes() &&
-        getPeso() == ((Musculacao*)outro)->getPeso()
+        getNome() == outroMusculacao->getNome() &&
+        getDuracao() == outroMusculacao->getDuracao() &&
+        getCalorias() == outroMusculacao->getCalorias() &&
+        getLugar() == outroMusculacao->getLugar() &&
+        _series == outroMusculacao->getSeries() &&
+        _rep_peso == outroMusculacao->getAllRepeticoesEPeso()
     };
 }

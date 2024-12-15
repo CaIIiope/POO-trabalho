@@ -3,15 +3,14 @@
 #include <Treino.hpp>
 class Musculacao : public Treino{
     private:
-        int _peso;
-        int _repeticoes;
         int _series;
+        std::vector<std::pair<int, float>> _rep_peso; // Vetor de pares {repetições, peso} para cada série
     public:
-        Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int repeticoes, int series, int peso);
+        Musculacao(int duracao, int calorias, std::string lugar, std::string nome, int series);
         ~Musculacao();
-        int getRepeticoes();
         int getSeries();
-        int getPeso();
+        std::pair<int, float> getRepeticoesEPeso(int serie); 
+        std::vector<std::pair<int, float>>& getAllRepeticoesEPeso(); 
 
         bool operator==(Treino* outro);
 

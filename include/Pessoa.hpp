@@ -20,7 +20,7 @@ class Pessoa{
         Pessoa(const std::string& pathdata);
         ~Pessoa();
 
-        void adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar, std::string nome, int series, int repeticoes, int peso);
+        void adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar, std::string nome, int series);
         void adicionarAerobico(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int intensidade);
 
         void removerTreino(int ano, int mes, int dia, std::string& nome);

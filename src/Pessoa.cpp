@@ -19,9 +19,9 @@ Pessoa::~Pessoa(){
 }
 
 // Adiciona um treino de musculação no calendario
-void Pessoa::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series, int repeticoes, int peso){
+void Pessoa::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series){
     std::cout << "Adicionando treino de musculação..." << std::endl;
-    _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, repeticoes, peso);
+    _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series);
 }
 
 // Adiciona um treino aerobico no calendario
@@ -142,7 +142,7 @@ int Pessoa::carregarDados(){
             std::getline(file, line);
             peso = std::atoi(line.substr(6).c_str());
 
-            _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, repeticoes, peso);
+            _calendario.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series);
 
         }
         // Le os atributos da classe Aerobico

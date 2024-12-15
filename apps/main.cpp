@@ -55,103 +55,85 @@ int main() {
                     std::getline(std::cin, input);
                     std::stringstream(input) >> opcao;
 
-                if (opcao == '2') { // Caso o usuario nao queira adicionar treinos
-                    std::cout << "Ok, você pode adicionar treinos depois!" << std::endl;
-                    pessoa.salvarDados(); // Salva os dados e volta ao menu principal
-                    sleep(2);
-                    std::system("clear");
+                    if (opcao == '2') { // Caso o usuario nao queira adicionar treinos
+                        std::cout << "Ok, você pode adicionar treinos depois!" << std::endl;
+                        pessoa.salvarDados(); // Salva os dados e volta ao menu principal
+                        sleep(2);
+                        std::system("clear");
 
-                    break;
-                } else if (opcao == '1') { // Adicionar treino ao novo usuario
-                    std::system("clear");
-                    while (true) {
-                        std::cout << "Escolha o tipo de treino: 1 - Musculação 2 - Aeróbico" << std::endl;
+                        break;
+                    } else if (opcao == '1') { // Adicionar treino ao novo usuario
+                        std::system("clear");
+                        while (true) {
+                            std::cout << "Escolha o tipo de treino: 1 - Musculação 2 - Aeróbico" << std::endl;
+                            std::getline(std::cin, input);
+                            std::stringstream(input) >> opcao;
+                            if (opcao == '1' || opcao == '2') 
+                                break;
+                            else 
+                                std::cout << "Opção inválida. Por favor, escolha 1 para Musculação ou 2 para Aeróbico." << std::endl;
+                        }
+
+                        std::string nome, lugar;
+                        int duracao, calorias, series, repeticoes, intensidade, peso, ano, mes, dia;
+
+                        std::system("clear");
+                        std::cout << "Digite o nome do treino: ";
+                        std::getline(std::cin, nome);
+
+                        std::cout << "Digite o lugar do treino: ";
+                        std::getline(std::cin, lugar);
+
+                        while (true) {
+                            std::cout << "Digite a duração do treino: ";
+                            std::getline(std::cin, input);
+                            if (std::stringstream(input) >> duracao) 
+                                break;
+                            else
+                                std::cout << "Duração inválida. Por favor, insira um número." << std::endl;
+                        }
+
+                        while (true) {
+                            std::cout << "Digite as calorias gastas: ";
+                            std::getline(std::cin, input);
+                            if (std::stringstream(input) >> calorias)
+                                break;
+                            else
+                                std::cout << "Calorias inválidas. Por favor, insira um número." << std::endl;
+                        }
+
+                        std::cout << "Digite a data no formato dd/mm/aaaa: ";
                         std::getline(std::cin, input);
-                        std::stringstream(input) >> opcao;
-                        if (opcao == '1' || opcao == '2') 
-                            break;
-                        else 
-                            std::cout << "Opção inválida. Por favor, escolha 1 para Musculação ou 2 para Aeróbico." << std::endl;
-                    }
+                        std::stringstream dateStream(input);
+                        char lixo;
+                        dateStream >> dia >> lixo >> mes >> lixo >> ano;
 
-                    std::string nome, lugar;
-                    int duracao, calorias, series, repeticoes, intensidade, peso, ano, mes, dia;
+                        if (opcao == '1') { // Opcao para adicionar treino de musculacao
+                            while (true) {
+                                std::cout << "Digite o número de séries: ";
+                                std::getline(std::cin, input);
+                                if (std::stringstream(input) >> series) 
+                                    break;
+                                else
+                                    std::cout << "Número de séries inválido. Por favor, insira um número." << std::endl;
+                            }
 
-                    std::system("clear");
-                    std::cout << "Digite o nome do treino: ";
-                    std::getline(std::cin, nome);
+                            pessoa.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series);
+                        } else if (opcao == '2') { // Opcao para adicionar treino aerobico
+                            while (true) {
+                                std::cout << "Digite a intensidade: ";
+                                std::getline(std::cin, input);
+                                if (std::stringstream(input) >> intensidade)
+                                    break;
+                                else
+                                    std::cout << "Intensidade inválida. Por favor, insira um número." << std::endl;
+                            }
 
-                    std::cout << "Digite o lugar do treino: ";
-                    std::getline(std::cin, lugar);
-
-                    while (true) {
-                        std::cout << "Digite a duração do treino: ";
-                        std::getline(std::cin, input);
-                        if (std::stringstream(input) >> duracao) 
-                            break;
-                        else
-                            std::cout << "Duração inválida. Por favor, insira um número." << std::endl;
-                    }
-
-                    while (true) {
-                        std::cout << "Digite as calorias gastas: ";
-                        std::getline(std::cin, input);
-                        if (std::stringstream(input) >> calorias)
-                            break;
-                        else
-                            std::cout << "Calorias inválidas. Por favor, insira um número." << std::endl;
-                    }
-
-                    std::cout << "Digite a data no formato dd/mm/aaaa: ";
-                    std::getline(std::cin, input);
-                    std::stringstream dateStream(input);
-                    char lixo;
-                    dateStream >> dia >> lixo >> mes >> lixo >> ano;
-
-                    if (opcao == '1') { // Opcao para adicionar treino de musculacao
-                        while (true) {
-                            std::cout << "Digite o número de séries: ";
-                            std::getline(std::cin, input);
-                            if (std::stringstream(input) >> series) 
-                                break;
-                            else
-                                std::cout << "Número de séries inválido. Por favor, insira um número." << std::endl;
+                            pessoa.adicionarAerobico(ano, mes, dia, duracao, calorias, lugar, nome, intensidade);
+                        } else {
+                            std::cout << "Opção inválida" << std::endl;
                         }
-
-                        while (true) {
-                            std::cout << "Digite o número de repetições: ";
-                            std::getline(std::cin, input);
-                            if (std::stringstream(input) >> repeticoes) 
-                                break;
-                            else
-                                std::cout << "Número de repetições inválido. Por favor, insira um número." << std::endl;
-                        }
-
-                        while (true) {
-                            std::cout << "Digite o peso: ";
-                            std::getline(std::cin, input);
-                            if (std::stringstream(input) >> peso) 
-                                break;
-                            else
-                                std::cout << "Peso inválido. Por favor, insira um número." << std::endl;
-                        }
-
-                        pessoa.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, repeticoes, peso);
-                    } else if (opcao == '2') { // Opcao para adicionar treino aerobico
-                        while (true) {
-                            std::cout << "Digite a intensidade: ";
-                            std::getline(std::cin, input);
-                            if (std::stringstream(input) >> intensidade)
-                                break;
-                            else
-                                std::cout << "Intensidade inválida. Por favor, insira um número." << std::endl;
-                        }
-
-                        pessoa.adicionarAerobico(ano, mes, dia, duracao, calorias, lugar, nome, intensidade);
-                    } else {
-                        std::cout << "Opção inválida" << std::endl;
                     }
-                }
             }
         } else if (opcao == '2') { // Caso o usuario queira carregar um usuario existente
             std::cout << "Digite o caminho para carregar seus dados: ";
@@ -194,7 +176,7 @@ int main() {
                     }
 
                     std::string nome, lugar;
-                    int duracao, calorias, series, repeticoes, intensidade, peso, ano, mes, dia;
+                    int duracao, calorias, series, intensidade, ano, mes, dia;
 
                     std::cout << "Digite o nome do treino: ";
                     std::getline(std::cin, nome);
@@ -236,25 +218,8 @@ int main() {
                                 std::cout << "Número de séries inválido. Por favor, insira um número." << std::endl;
                         }
 
-                        while (true) {
-                            std::cout << "Digite o número de repetições: ";
-                            std::getline(std::cin, input);
-                            if (std::stringstream(input) >> repeticoes)
-                                break;
-                            else
-                                std::cout << "Número de repetições inválido. Por favor, insira um número." << std::endl;
-                        }
 
-                        while (true) {
-                            std::cout << "Digite o peso: ";
-                            std::getline(std::cin, input);
-                            if (std::stringstream(input) >> peso)
-                                break;
-                            else
-                                std::cout << "Peso inválido. Por favor, insira um número." << std::endl;
-                        }
-
-                        pessoa.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series, repeticoes, peso);
+                        pessoa.adicionarMusculacao(ano, mes, dia, duracao, calorias, lugar, nome, series);
                     } else if (opcao == '2') { // Adicionar treino aerobico
                         while (true) {
                             std::cout << "Digite a intensidade: ";
