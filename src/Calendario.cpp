@@ -24,7 +24,6 @@ void Calendario::adicionarMusculacao(int ano, int mes, int dia, int duracao, int
     // Verifica se o treino existe e já foi salvo nesse dia
     if (existre_treino(ano, mes, dia, treino)){
         std::cout << "Treino já salvo nesse dia!" << std::endl;
-     
         return;
     }
     // Adiciona o treino no mapa calendario

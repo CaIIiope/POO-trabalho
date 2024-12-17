@@ -12,7 +12,7 @@ class Treino{
         std::string _lugar, _nome;
     public:
         Treino(int duracao, int calorias, std::string lugar, std::string nome);
-        virtual ~Treino() = 0;
+        ~Treino();
         virtual void salvaTreino(std::stringstream* out) = 0;
         virtual void exibirTreino(std::ostream &out) = 0;
 

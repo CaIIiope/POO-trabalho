@@ -2,12 +2,11 @@ lucas
 1
 data 11/11/1111
 Treino Musculacao
-Nome: aa
-Duracao: 1
-Calorias: 2
-Lugar: bb
-Series: 3
+Nome: 1
+Duracao: 3
+Calorias: 1
+Lugar: 2
+Series: 2
 Detalhes das séries:
    Série 1: 1 repetições, 1
-   Série 2: 1 repetições, 2
-   Série 3: 2 repetições, 2
+   Série 2: 2 repetições, 2

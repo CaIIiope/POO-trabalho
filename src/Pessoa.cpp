@@ -15,7 +15,7 @@ Pessoa::Pessoa(const std::string& pathdata){
     carregarDados();
 }
 
-Pessoa::~Pessoa(){
+Pessoa::~Pessoa() {
 }
 
 // Adiciona um treino de musculação no calendario

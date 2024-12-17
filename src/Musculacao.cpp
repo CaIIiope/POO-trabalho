@@ -9,7 +9,6 @@ Musculacao::Musculacao(int duracao, int calorias, std::string lugar, std::string
 }
 
 Musculacao::~Musculacao(){
-
 }
 
 // Getter para o número de séries

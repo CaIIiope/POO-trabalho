@@ -163,6 +163,8 @@ int main() {
                 if (opcao == '4') { // Voltar ao menu principal
                     std::cout << "Até mais!" << std::endl;
                     pessoa.salvarDados(); 
+                    sleep(2);
+                    std::system("clear");
                     break;
                 } else if (opcao == '1') {  // Caso o usuario queira adicionar um treino
                     std::system("clear");
