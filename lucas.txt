@@ -6,7 +6,8 @@ Nome: aa
 Duracao: 1
 Calorias: 2
 Lugar: bb
-Series: 2
+Series: 3
 Detalhes das séries:
-   Série 1: 10 repetições, 2
-   Série 2: 3 repetições, 4
+   Série 1: 1 repetições, 1
+   Série 2: 1 repetições, 2
+   Série 3: 2 repetições, 2

@@ -7,6 +7,7 @@
 
 // A main consiste em um aninhamento de ifs e elses para a escolha de opções disponiveis ao usuario
 int main() {
+    std::system("clear");
     std::cout << "Bem vindo ao seu calendário de treinos!" << std::endl;
     std::string input;
     char opcao;

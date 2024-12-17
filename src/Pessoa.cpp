@@ -159,17 +159,20 @@ int Pessoa::carregarDados() {
             std::getline(file, line);
             series = std::atoi(line.substr(8).c_str());
 
+            std::getline(file, line);
+
             // Vetor para armazenar as séries
             std::vector<std::pair<int, float>> rep_peso;
 
             // Lê os detalhes de cada série
             for (int i = 0; i < series; ++i) {
                 std::getline(file, line);
-                size_t pos_repeticoes = line.find("repetições,");
-                size_t pos_peso = line.find(",", pos_repeticoes + 12);
 
-                repeticoes = std::atoi(line.substr(8, pos_repeticoes - 8).c_str());
-                peso = std::atof(line.substr(pos_peso + 2).c_str());
+                std::smatch match;
+                regex_search(line, match, std::regex(R"(Série (\d+): (\d+) repetições, (\d+))"));
+
+                repeticoes = std::stoi(match[2]);
+                peso = std::stof(match[3]);
 
                 rep_peso.emplace_back(repeticoes, peso);
             }

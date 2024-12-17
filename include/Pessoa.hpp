@@ -6,6 +6,7 @@
 #include <string>
 #include <Calendario.hpp>
 #include <fstream>
+#include <regex>
 
 class Pessoa{
     private:
