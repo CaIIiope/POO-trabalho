@@ -1,3 +1,6 @@
+// Caio Florentin Oliveira 14562921
+// Lucas Gonzalez Ribeiro da Silva 14675524
+
 #include "Aerobico.hpp"
 
 // Construtor da classe Aerobico, derivada da classe Treino
@@ -34,20 +37,19 @@ void Aerobico::exibirTreino(std::ostream &out) {
 }
 
 // Sobrecarga do operador de comparação para verificar se dois treinos são iguais
-bool Aerobico::operator==(Treino* outro) {
+bool Aerobico::operator==(std::shared_ptr<Treino> outro) {
 
-    // Verifica se 'outro' é realmente uma instância de aerobico
-    Aerobico* outroaerobico = dynamic_cast<Aerobico*>(outro);
+    // Verifica se 'outro' é realmente uma instância de Aerobico
+    std::shared_ptr<Aerobico> outroaerobico = std::dynamic_pointer_cast<Aerobico>(outro);
     if (outroaerobico == nullptr) {
         return false;
     }
 
-    return{
+    return {
         getNome() == outro->getNome() &&
         getDuracao() == outro->getDuracao() &&
         getCalorias() == outro->getCalorias() &&
         getLugar() == outro->getLugar() &&
-        getIntensidade() == ((Aerobico*)outro)->getIntensidade()
-
+        getIntensidade() == outroaerobico->getIntensidade()
     };
 }

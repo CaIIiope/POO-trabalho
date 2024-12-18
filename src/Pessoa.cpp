@@ -1,3 +1,6 @@
+// Caio Florentin Oliveira 14562921
+// Lucas Gonzalez Ribeiro da Silva 14675524
+
 #include <Pessoa.hpp>
 
 // Construtor da classe Pessoa  para novo usuario
@@ -17,6 +20,7 @@ Pessoa::Pessoa(const std::string& pathdata){
 
 Pessoa::~Pessoa() {
 }
+
 
 // Adiciona um treino de musculação no calendario
 void Pessoa::adicionarMusculacao(int ano, int mes, int dia, int duracao, int calorias,std::string lugar,std::string nome, int series){
@@ -64,7 +68,7 @@ void Pessoa::removerTreino(int ano, int mes, int dia, std::string& nome){
 // Exibe os treinos de uma data
 void Pessoa::exibirTreinos(int ano, int mes, int dia){
     // Pega os treinos da data informada
-    std::vector<Treino*> treinos = _calendario.getTreinos(ano, mes, dia);
+    std::vector<std::shared_ptr<Treino>> treinos = _calendario.getTreinos(ano, mes, dia);
     // Verifica se existem treinos
     if (treinos.size() == 0){
         std::cout << "Nenhum treino encontrado para a data informada." << std::endl;
@@ -206,3 +210,4 @@ int Pessoa::carregarDados() {
     file.close();
     return 1;
 }
+

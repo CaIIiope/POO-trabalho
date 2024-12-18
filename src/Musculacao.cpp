@@ -1,3 +1,6 @@
+// Caio Florentin Oliveira 14562921
+// Lucas Gonzalez Ribeiro da Silva 14675524
+
 #include <Musculacao.hpp>
 
 // Construtor da classe Musculacao, derivada da classe Treino
@@ -63,12 +66,11 @@ void Musculacao::exibirTreino(std::ostream &out){
     }
 }
 // Sobrecarga do operador de comparação para verificar se dois treinos são iguais
-bool Musculacao::operator==(Treino* outro){
+bool Musculacao::operator==(std::shared_ptr<Treino> outro){
 
     // Verifica se 'outro' é realmente uma instância de Musculacao
-    Musculacao* outroMusculacao = dynamic_cast<Musculacao*>(outro);
+    std::shared_ptr<Musculacao> outroMusculacao = std::dynamic_pointer_cast<Musculacao>(outro);
     if (outroMusculacao == nullptr) {
-        std::cout << "O treino comparado não é de musculação." << std::endl;
         return false;
     }
 

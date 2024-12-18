@@ -1,3 +1,6 @@
+// Caio Florentin Oliveira 14562921
+// Lucas Gonzalez Ribeiro da Silva 14675524
+
 #include "Treino.hpp"
 
 // Construtor da classe Treino
